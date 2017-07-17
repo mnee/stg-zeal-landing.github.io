@@ -3,7 +3,6 @@
 <head>
   <title>Zeal Parent</title>
   <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.18.1/build/cssreset/cssreset-min.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="shortcut icon" href="Favicon.png">
@@ -19,7 +18,6 @@ for(h=0;h<k.length;h++)e(d,k[h]);a._i.push([b,c,f])};a.__SV=1.2;b=e.createElemen
 mixpanel.init("d88a3f958bee96f47745ae7b6f280df9", {
     loaded: function(mixpanel) {
         window['optimizely'] = window['optimizely'] || [];
-        console.log(window['optimizely'].data.state.activeExperiments);
         mixpanel.track("landing_page_load");
         var user_id = mixpanel.get_distinct_id();
     document.getElementById("A_2").href = 'https://parent.zeal.com/#!/landing?mode=createAccount&mixpanelDistinctId=' + user_id;
@@ -602,6 +600,30 @@ mixpanel.init("d88a3f958bee96f47745ae7b6f280df9", {
     <div>
         <img src="https://static.wixstatic.com/media/b02a49_8a4f187eb57444efbb7f38fab3e4408d~mv2.png/v1/fill/w_1200,h_56,al_c,usm_0.66_1.00_0.01/b02a49_8a4f187eb57444efbb7f38fab3e4408d~mv2.png" style="width: 600px; height: 28px; display: block; margin:auto; position: relative; top: 24px;"></div>
     </section>
+<script type="text/javascript">
+    function activeVariations(){
 
+    // Multiple variations may currently be active
+    var activeVariations = [];
+
+    // Get state settings from optimizely object
+    var state = window['optimizely'].data.state;
+
+    // For each of the active experiments:
+    for (var i = state.activeExperiments.length - 1; i >= 0; i--) {
+
+    // Current experiment ID
+    var experimentID = state.activeExperiments[i];
+
+    // Current corresponding variation ID
+    var variationID = state.variationIdsMap[experimentID];
+
+    // If we have an active variation, add it to our array
+    if (variationID) { activeVariations.push(variationID[0]); }
+    }
+    console.log(activeVariations);
+  // List of active variations
+  return activeVariations;
+}</script>
 </body>
 </html>
