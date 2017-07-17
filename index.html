@@ -17,27 +17,15 @@ for(h=0;h<k.length;h++)e(d,k[h]);a._i.push([b,c,f])};a.__SV=1.2;b=e.createElemen
 mixpanel.init("99f35bfccecaa88d8b1da3f4cf850408", {
     loaded: function(mixpanel) {
         window['optimizely'] = window['optimizely'] || [];
-
-        // Multiple variations may currently be active
-        var activeVariations = [];
-
+        
         // Get state settings from optimizely object
         var state = optimizely.get('state');
-
-        // For each of the active experiments:
-        for (var i = state.getActiveExperimentIds().length - 1; i >= 0; i--) {
-
-        // Current experiment ID
-        var experimentID = state.getActiveExperimentIds()[i];
-
-        // Current corresponding variation ID
-        var variationID = state.getVariationMap()[experimentID];
-
-        // If we have an active variation, add it to our array
-        if (variationID) { activeVariations.push(variationID[0]); }
-        }
-        console.log(activeVariations);
-        mixpanel.track("landing_page_load");
+        var exp_id = state.getActiveExperimentIds()[0];
+        
+        mixpanel.track("stg_landing_page_load", {
+            "Variation Name": state.getVariationMap()[exp_id].name
+        });
+        console.log(state.getVariationMap()[exp_id].name);
         var user_id = mixpanel.get_distinct_id();
     document.getElementById("A_2").href = 'https://parent.zeal.com/#!/landing?mode=createAccount&mixpanelDistinctId=' + user_id;
     }
