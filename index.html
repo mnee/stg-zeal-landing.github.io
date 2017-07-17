@@ -27,7 +27,7 @@ mixpanel.init("99f35bfccecaa88d8b1da3f4cf850408", {
         });
         console.log(state.getVariationMap()[exp_id].name);
         var user_id = mixpanel.get_distinct_id();
-    document.getElementById("A_2").href = 'https://parent.zeal.com/#!/landing?mode=createAccount&mixpanelDistinctId=' + user_id;
+    document.getElementById("A_2").href = 'https://stg-parent.zeal.com/#!/landing?mode=createAccount&mixpanelDistinctId=' + user_id;
     }
 });
     </script><!-- end Mixpanel -->
