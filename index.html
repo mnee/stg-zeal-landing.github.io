@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="shortcut icon" href="Favicon.png">
-<script src="https://cdn.optimizely.com/js/8484452057.js"></script>
+    <script src="https://cdn.optimizely.com/js/8484452057.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     
@@ -22,7 +22,7 @@ mixpanel.init("99f35bfccecaa88d8b1da3f4cf850408", {
         var activeVariations = [];
 
         // Get state settings from optimizely object
-        var state = window['optimizely'].data.state;
+        var state = window['optimizely'].get('data');
 
         // For each of the active experiments:
         for (var i = state.activeExperiments.length - 1; i >= 0; i--) {
