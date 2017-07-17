@@ -17,7 +17,27 @@
 for(h=0;h<k.length;h++)e(d,k[h]);a._i.push([b,c,f])};a.__SV=1.2;b=e.createElement("script");b.type="text/javascript";b.async=!0;b.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"file:"===e.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";c=e.getElementsByTagName("script")[0];c.parentNode.insertBefore(b,c)}})(document,window.mixpanel||[]);
 mixpanel.init("99f35bfccecaa88d8b1da3f4cf850408", {
     loaded: function(mixpanel) {
-        console.log("Running");
+        window['optimizely'] = window['optimizely'] || [];
+
+        // Multiple variations may currently be active
+        var activeVariations = [];
+
+        // Get state settings from optimizely object
+        var state = window['optimizely'].data.state;
+
+        // For each of the active experiments:
+        for (var i = state.activeExperiments.length - 1; i >= 0; i--) {
+
+        // Current experiment ID
+        var experimentID = state.activeExperiments[i];
+
+        // Current corresponding variation ID
+        var variationID = state.variationIdsMap[experimentID];
+
+        // If we have an active variation, add it to our array
+        if (variationID) { activeVariations.push(variationID[0]); }
+        }
+        console.log(activeVariations);
         mixpanel.track("landing_page_load");
         var user_id = mixpanel.get_distinct_id();
     document.getElementById("A_2").href = 'https://parent.zeal.com/#!/landing?mode=createAccount&mixpanelDistinctId=' + user_id;
@@ -600,6 +620,32 @@ mixpanel.init("99f35bfccecaa88d8b1da3f4cf850408", {
     <div>
         <img src="https://static.wixstatic.com/media/b02a49_8a4f187eb57444efbb7f38fab3e4408d~mv2.png/v1/fill/w_1200,h_56,al_c,usm_0.66_1.00_0.01/b02a49_8a4f187eb57444efbb7f38fab3e4408d~mv2.png" style="width: 600px; height: 28px; display: block; margin:auto; position: relative; top: 24px;"></div>
     </section>
+    <!--
+<script type="text/javascript">
+    function activeVariations(){
+    window['optimizely'] = window['optimizely'] || [];
 
+    // Multiple variations may currently be active
+    var activeVariations = [];
+
+    // Get state settings from optimizely object
+    var state = window['optimizely'].data.state;
+
+    // For each of the active experiments:
+    for (var i = state.activeExperiments.length - 1; i >= 0; i--) {
+
+    // Current experiment ID
+    var experimentID = state.activeExperiments[i];
+
+    // Current corresponding variation ID
+    var variationID = state.variationIdsMap[experimentID];
+
+    // If we have an active variation, add it to our array
+    if (variationID) { activeVariations.push(variationID[0]); }
+    }
+    console.log(activeVariations);
+  // List of active variations
+  return activeVariations;
+}</script> -->
 </body>
 </html>
