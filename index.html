@@ -22,16 +22,16 @@ mixpanel.init("99f35bfccecaa88d8b1da3f4cf850408", {
         var activeVariations = [];
 
         // Get state settings from optimizely object
-        var state = window['optimizely'].get('data');
+        var state = optimizely.get('state');
 
         // For each of the active experiments:
-        for (var i = state.activeExperiments.length - 1; i >= 0; i--) {
+        for (var i = state.getActiveExperiments().length - 1; i >= 0; i--) {
 
         // Current experiment ID
-        var experimentID = state.activeExperiments[i];
+        var experimentID = state.getActiveExperiments()[i];
 
         // Current corresponding variation ID
-        var variationID = state.variationIdsMap[experimentID];
+        var variationID = state.getVariationMap()[experimentID];
 
         // If we have an active variation, add it to our array
         if (variationID) { activeVariations.push(variationID[0]); }
