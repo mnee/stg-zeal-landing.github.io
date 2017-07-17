@@ -25,10 +25,10 @@ mixpanel.init("99f35bfccecaa88d8b1da3f4cf850408", {
         var state = optimizely.get('state');
 
         // For each of the active experiments:
-        for (var i = state.getActiveExperiments().length - 1; i >= 0; i--) {
+        for (var i = state.getActiveExperimentIds().length - 1; i >= 0; i--) {
 
         // Current experiment ID
-        var experimentID = state.getActiveExperiments()[i];
+        var experimentID = state.getActiveExperimentIds()[i];
 
         // Current corresponding variation ID
         var variationID = state.getVariationMap()[experimentID];
