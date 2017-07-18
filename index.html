@@ -23,6 +23,9 @@ mixpanel.init("99f35bfccecaa88d8b1da3f4cf850408", {
         var exp_id = state.getActiveExperimentIds()[0];
         
         mixpanel.track("stg_landing_page_load", {
+            // Include experiment name
+            // optimizely.get('data').
+            
             "Variation Name": state.getVariationMap()[exp_id].name
         });
         console.log(state.getVariationMap()[exp_id].name);
@@ -30,7 +33,57 @@ mixpanel.init("99f35bfccecaa88d8b1da3f4cf850408", {
     document.getElementById("A_2").href = 'https://stg-parent.zeal.com/#!/landing?mode=createAccount&mixpanelDistinctId=' + user_id;
     }
 });
+    
+/*
+ * Usage
+ *    This function fires custom events at different scroll depth milestones.  
+ */
+
+  // Variables to prevent continuous firing of custom events
+
+  var scrollTwentyFive = true;
+  var scrollFifty = true;
+  var scrollSeventyFive = true;
+  var scrollOneHundred = true;
+
+  // Create the scrollPercentage
+
+  $(window).bind('scroll', function() {
+      window.scrollPercent = ($(window).scrollTop() / ($(document).height() - $(window).height())) * 100;
+
+      // Conditional code we'll use to fire events based on scrollPercentage.
+
+      if (window.scrollPercent >= 25 && scrollTwentyFive) {
+          mixpanel.track("stg_landing_scroll_percent", {
+              "Percent": 25;
+          }
+          scrollTwentyFive = false;
+      }
+
+      if (window.scrollPercent >= 50 && scrollFifty) {
+           mixpanel.track("stg_landing_scroll_percent", {
+              "Percent": 50;
+          }
+          scrollFifty = false;
+      }
+
+      if (window.scrollPercent >= 75 && scrollSeventyFive) {
+           mixpanel.track("stg_landing_scroll_percent", {
+              "Percent": 75;
+          }
+          scrollSeventyFive = false;
+      }
+
+      if (window.scrollPercent >= 100 && scrollOneHundred) {
+           mixpanel.track("stg_landing_scroll_percent", {
+              "Percent": 100;
+          }
+          scrollOneHundred = false;
+      }
+
+  });
     </script><!-- end Mixpanel -->
+    
     
 <style>
     #SECTION_1 {
@@ -506,16 +559,67 @@ mixpanel.init("99f35bfccecaa88d8b1da3f4cf850408", {
     outline: rgb(101, 102, 144) none 0px;
     transition: color 0.4s ease 0s;
 }/*#SPAN_3*/
+    
+    #footer_signup {
+    bottom: 0px;
+    box-sizing: border-box;
+    display: flex;
+    height: 80px;
+    left: 0px;
+    position: fixed;
+    right: 0px;
+    text-align: center;
+    top: 573px;
+    width: 1067px;
+    z-index: 30;
+    align-items: center;
+    justify-content: center;
+    perspective-origin: 533.5px 40px;
+    transform-origin: 533.5px 40px;
+    background: rgb(255, 75, 179) none repeat scroll 0% 0% / auto padding-box border-box;
+    font: normal normal normal normal 16px / 16px "Open Sans";
+}/*#DIV_1*/
 
-
-
+#button_text_2 {
+    box-sizing: border-box;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    height: 45px;
+    min-height: auto;
+    min-width: auto;
+    text-align: center;
+    text-decoration: none solid rgb(255, 255, 255);
+    text-transform: uppercase;
+    touch-action: manipulation;
+    white-space: nowrap;
+    width: 217.25px;
+    column-rule-color: rgb(255, 255, 255);
+    align-self: center;
+    perspective-origin: 108.625px 22.5px;
+    transform-origin: 108.625px 22.5px;
+    user-select: none;
+    caret-color: rgb(255, 255, 255);
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 50px 50px 50px 50px;
+    font: normal normal normal normal 14px / 14px "Roboto Bold";
+    outline: rgb(255, 255, 255) none 0px;
+    padding: 16px 47px 27px;
+}/*#DIV_2*/
 
     </style>
 </head>
-    
+
 <header style="width: 100vw; position: absolute; height: 70px; left: 0px; background-color: #ffffff;" class="hc1" data-state=" " id="HEADER_1" data-reactid=".0.$SITE_ROOT.$desktop_siteRoot.$SITE_HEADER">
     <img src="https://static.wixstatic.com/media/f59da8_4e2094124146410b9e8047fa46d2a0fa~mv2.png/v1/fill/w_206,h_82,al_c,usm_0.66_1.00_0.01/f59da8_4e2094124146410b9e8047fa46d2a0fa~mv2.png" style=" position: absolute; left:10px; top: 10px; height: 45px; object-fit: cover;">
 </header>
+<footer>
+    <div id="footer_signup">
+	<div id="button_text_2">
+		Start Free Trial
+	</div>
+	<!-- ngIf: states.showCreateAccount -->
+
+</div></footer>
 <body style="background-color: #ffffff">
 
     <div class="container">  
