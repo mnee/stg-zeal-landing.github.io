@@ -33,7 +33,7 @@ mixpanel.init("99f35bfccecaa88d8b1da3f4cf850408", {
         });
        //console.log(state.getVariationMap()[exp_id].name);
         var user_id = mixpanel.get_distinct_id();
-    document.getElementById("A_2").href = 'https://stg-parent.zeal.com/#!/landing?mode=createAccount&mixpanelDistinctId=' + user_id;
+    document.getElementById("button_foot_link").href = 'https://stg-parent.zeal.com/#!/landing?mode=createAccount&mixpanelDistinctId=' + user_id;
     }
 });
     
@@ -563,37 +563,30 @@ mixpanel.init("99f35bfccecaa88d8b1da3f4cf850408", {
     transition: color 0.4s ease 0s;
 }/*#SPAN_3*/
     
-    #footer_signup {
+#footer_signup {
     bottom: 0px;
     box-sizing: border-box;
-    display: flex;
+    display: block;
     height: 80px;
-    left: 0px;
     position: fixed;
-    right: 0px;
     text-align: center;
-    top: 573px;
-    width: 1067px;
+    width: 100vw;
     z-index: 30;
     align-items: center;
     justify-content: center;
-    perspective-origin: 533.5px 40px;
-    transform-origin: 533.5px 40px;
     background: rgb(255, 75, 179) none repeat scroll 0% 0% / auto padding-box border-box;
-    font: normal normal normal normal 16px / 16px "Open Sans";
+    font: normal normal normal normal 16px / 16px sans-serif;
 }/*#DIV_1*/
 
 #button_text_2 {
-    box-sizing: border-box;
+    position: relative;
+    bottom: -17.5px;
     color: rgb(255, 255, 255);
     cursor: pointer;
-    height: 45px;
-    min-height: auto;
-    min-width: auto;
-    text-align: center;
+    height: 30px;
+    margin: auto;
     text-decoration: none solid rgb(255, 255, 255);
     text-transform: uppercase;
-    touch-action: manipulation;
     white-space: nowrap;
     width: 217.25px;
     column-rule-color: rgb(255, 255, 255);
@@ -603,13 +596,17 @@ mixpanel.init("99f35bfccecaa88d8b1da3f4cf850408", {
     user-select: none;
     caret-color: rgb(255, 255, 255);
     border: 1px solid rgb(255, 255, 255);
-    border-radius: 50px 50px 50px 50px;
-    font: normal normal normal normal 14px / 14px "Roboto Bold";
+    border-radius: 30px 30px 30px 30px;
+    font: normal normal bold normal 14px / 14px sans-serif;
     outline: rgb(255, 255, 255) none 0px;
-    padding: 16px 47px 27px;
+    padding: 16px 8px 27px;
 }/*#DIV_2*/
+    
+#button_text_2:hover {
+    background-color: rgba(255, 255, 255, .25);
+}
 
-    </style>
+</style>
 </head>
 
 <header style="width: 100vw; position: absolute; height: 70px; left: 0px; background-color: #ffffff;" class="hc1" data-state=" " id="HEADER_1" data-reactid=".0.$SITE_ROOT.$desktop_siteRoot.$SITE_HEADER">
@@ -617,12 +614,14 @@ mixpanel.init("99f35bfccecaa88d8b1da3f4cf850408", {
 </header>
 <footer>
     <div id="footer_signup">
-	<div id="button_text_2">
-		Start Free Trial
-	</div>
+        <a href="#" id="button_foot_link" style="text-decoration: none;">
+            <div id="button_text_2">Start Free Trial</div>
+        </a>
+    </div>
+	
 	<!-- ngIf: states.showCreateAccount -->
 
-</div></footer>
+</footer>
 <body style="background-color: #ffffff">
 
     <div class="container">  
@@ -699,21 +698,22 @@ mixpanel.init("99f35bfccecaa88d8b1da3f4cf850408", {
 <section style="height: 300px; position: absolute; background-color: #ffffff; top: 755px; width: 100vw;">
     <div style="position: relative; display: block; width: 700px; margin: auto; text-align: center; top: 0px; font-family: Verdana, Geneva, sans-serif; font-size: 30px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 40px;
     letter-spacing: 1.5px;">Join 40,000 K-8 students getting unlimited, live tutoring on Zeal for only $49.99 a month!</div>
-     <div id="button">
+    <!--<div id="button">
          
 	   <a href="#" data-type="external" role="button" id="A_2" class="g-transparent-a style-j51l6oj4link" data-reactid=".0.$SITE_ROOT.$desktop_siteRoot.$PAGES_CONTAINER.$centeredContent.$inlineContent.$SITE_PAGES.$c1dmp_DESKTOP.$inlineContent.$comp-il45cntd.$inlineContent.$mediait2pzfw67/=1$mediait2pzfw67.$inlineContent.$comp-j51gvj1b.$link">
            <span id="button_text">SIGN UP FOR A FREE TRIAL</span>
         </a>
-    </div>
+    </div>-->
     
 </section>
 
-<section style="height: 40px; position: absolute; background-color: #06274E; top: 1000px; width: 100vw;"/>
+<section style="height: 40px; position: absolute; background-color: #06274E; top: 930px; width: 100vw;"/>
 
-    <section style="height: 75px; position: absolute; background-color: #656690; top: 40px; width: 100vw;">
+    <section style="height: 75px; position: absolute; background-color: #656690; top:0px; width: 100vw; z-index: 29;">
     <div>
         <img src="https://static.wixstatic.com/media/b02a49_8a4f187eb57444efbb7f38fab3e4408d~mv2.png/v1/fill/w_1200,h_56,al_c,usm_0.66_1.00_0.01/b02a49_8a4f187eb57444efbb7f38fab3e4408d~mv2.png" style="width: 600px; height: 28px; display: block; margin:auto; position: relative; top: 24px;"></div>
     </section>
+    <section style="height: 120px; position: absolute; top: 35px; background-color: white; width: 100vw;" />
     <!--
 <script type="text/javascript">
     function activeVariations(){
