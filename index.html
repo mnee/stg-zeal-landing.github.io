@@ -23,7 +23,7 @@ mixpanel.init("99f35bfccecaa88d8b1da3f4cf850408", {
         var exp_id = state.getActiveExperimentIds()[0];
         
         mixpanel.track("stg_landing_page_load", {
-            "Experiment Name": optimizely.get('data').experiments[0].name,
+            "Experiment Name": optimizely.get('data').experiments[exp_id].name,
             "Variation Name": state.getVariationMap()[exp_id].name        
         });
        //console.log(state.getVariationMap()[exp_id].name);
