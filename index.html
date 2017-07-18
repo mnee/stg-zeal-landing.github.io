@@ -25,11 +25,11 @@ mixpanel.init("99f35bfccecaa88d8b1da3f4cf850408", {
         mixpanel.track("stg_landing_page_load", {
             // Include experiment name
             // optimizely.get('data').
-            if (state.getVariationMap()[exp_id] !== 'undefined') {
-                "Variation Name": state.getVariationMap()[exp_id].name;
-            } else {
-                "Variation Name": "Undefined";           
-            } 
+            //if (state.getVariationMap()[exp_id] !== "undefined") {
+               // "Variation Name": state.getVariationMap()[exp_id].name;
+            //} else {
+                "Variation Name": "Undefined"          
+           //} 
         });
         console.log(state.getVariationMap()[exp_id].name);
         var user_id = mixpanel.get_distinct_id();
