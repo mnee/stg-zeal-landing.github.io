@@ -30,6 +30,10 @@
     document.getElementById("signup_screen").contentWindow.postMessage(mixpanel.get_distinct_id(), '*');
   }
 
+  window.onmessage = function(e){
+      window.location = e.data;
+  }
+
   // Create the scrollPercentage
   $(window).bind('scroll', function() {
       window.scrollPercent = ($(window).scrollTop() / ($(document).height() - $(window).height())) * 100;
@@ -72,7 +76,7 @@
   });
   
 function trackButton() {
-    mixpanel.track("signup_button_clicked");
+    mixpanel.track("stg_signup_button_clicked");
     var screen = document.getElementById("signup_screen").style;
     screen.visibility="visible";
     screen.zIndex="60";
@@ -92,6 +96,7 @@ function trackButton() {
 }
             
 function closeSignup() {
+    mixpanel.track("stg_closed_signup_screen")
     document.getElementById("signup_screen").style.bottom="-100vh";
     document.getElementById("signup_close").style.top="100vh";
     document.getElementById("down_arrow").style.top="100vh";
