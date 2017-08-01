@@ -221,9 +221,9 @@ body {
 #edsurge_title {
     width: 600px;
 	height: 14px;
-	font-family: "Verdana", sans-serif;
+	font-family: Roboto, sans-serif;
 	font-size: 24px;
-	font-weight: lighter;
+	font-weight: normal;
 	text-align: center;
 	color: white;
     position: relative;
@@ -426,7 +426,7 @@ body {
     z-index: 29;
 }
 
-@media only screen and (max-width: 736px) {
+@media only screen and (max-width: 797px) {
     /* For mobile phones: */
     #main_text {
         font-size: 32px;
@@ -518,9 +518,9 @@ body {
 #tutors_title {
     width: 600px;
 	height: 14px;
-	font-family: "Verdana", sans-serif;
+	font-family: Roboto, sans-serif;
 	font-size: 24px;
-	font-weight: lighter;
+	font-weight: normal;
 	text-align: center;
 	color: white;
     position: relative;
@@ -617,14 +617,14 @@ body {
     margin-left: 2vw;
 	height: 12vw;
 	font-family: Roboto, sans-serif;
-	font-size: 1vw;
+	font-size: 1.2vw;
 	font-weight: 300;
 	line-height: 1.5;
     overflow: scroll;
 	color: #4a4a4a;
 }
 
-@media only screen and (min-width: 930px) {
+@media only screen and (min-width: 881px) {
     .tutor_name {
         font-size: 15.81px;   
     }
@@ -634,7 +634,7 @@ body {
     }
     
     .tutor_bio {
-        font-size: 9.3px;
+        font-size: 10.572px;
     }
     
     #tutor_sub_head {

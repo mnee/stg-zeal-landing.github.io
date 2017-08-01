@@ -95,6 +95,11 @@ function closeSignup() {
     document.getElementById("signup_screen").style.bottom="-100vh";
     document.getElementById("signup_close").style.top="100vh";
     document.getElementById("down_arrow").style.top="100vh";
+    setTimeout(function() {
+        document.getElementById("signup_screen").style.visibility="hidden";
+        document.getElementById("signup_close").style.visibility="hidden";
+        document.getElementById("down_arrow").style.visibility="hidden";
+    }, 1200);
 }
 
 function closeFrame() {
@@ -149,6 +154,13 @@ function trackEdsurge() {
 
 setInterval(function(){
     document.getElementById("edsurge_logo").style.marginLeft = $(window).width()/2 - 50;
+    
+    var box = document.getElementById("signup_close").style;
+    var arrow = document.getElementById("down_arrow").style;
+    var leftShift = $(window).width()/2 - 75;
+    box.left=leftShift.toString() + 'px';
+    arrow.left=leftShift.toString() + 'px';
+    
 }, 100);
 
 var tutorA;
