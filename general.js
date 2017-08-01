@@ -1,25 +1,20 @@
 // Staging: 99f35bfccecaa88d8b1da3f4cf850408 Production: d88a3f958bee96f47745ae7b6f280df9
 
 (function(e,a){if(!a.__SV){var b=window;try{var c,l,i,j=b.location,g=j.hash;c=function(a,b){return(l=a.match(RegExp(b+"=([^&]*)")))?l[1]:null};g&&c(g,"state")&&(i=JSON.parse(decodeURIComponent(c(g,"state"))),"mpeditor"===i.action&&(b.sessionStorage.setItem("_mpcehash",g),history.replaceState(i.desiredHash||"",e.title,j.pathname+j.search)))}catch(m){}var k,h;window.mixpanel=a;a._i=[];a.init=function(b,c,f){function e(b,a){var c=a.split(".");2==c.length&&(b=b[c[0]],a=c[1]);b[a]=function(){b.push([a].concat(Array.prototype.slice.call(arguments, 0)))}}var d=a;"undefined"!==typeof f?d=a[f]=[]:f="mixpanel";d.people=d.people||[];d.toString=function(b){var a="mixpanel";"mixpanel"!==f&&(a+="."+f);b||(a+=" (stub)");return a};d.people.toString=function(){return d.toString(1)+".people (stub)"};k="disable time_event track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config reset people.set people.set_once people.increment people.append people.union people.track_charge people.clear_charges people.delete_user".split(" "); for(h=0;h<k.length;h++)e(d,k[h]);a._i.push([b,c,f])};a.__SV=1.2;b=e.createElement("script");b.type="text/javascript";b.async=!0;b.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"file:"===e.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";c=e.getElementsByTagName("script")[0];c.parentNode.insertBefore(b,c)}})(document,window.mixpanel||[]);
-    mixpanel.init("99f35bfccecaa88d8b1da3f4cf850408", {
+    mixpanel.init("d88a3f958bee96f47745ae7b6f280df9", {
     loaded: function(mixpanel) {
-        //window['optimizely'] = window['optimizely'] || [];
+        window['optimizely'] = window['optimizely'] || [];
         
         // Get state settings from optimizely object
-        //var state = optimizely.get('state');
-        //var exp_id = state.getActiveExperimentIds()[0];
-        mixpanel.track("stg_landing_page_load");
-        /*mixpanel.track("stg_landing_page_load", {
+        var state = optimizely.get('state');
+        var exp_id = state.getActiveExperimentIds()[0];
+        mixpanel.track("landing_page_load", {
             "Experiment Name": optimizely.get('data').experiments[exp_id].name,
             "Variation Name": state.getVariationMap()[exp_id].name        
-        });*/
-       //console.log(state.getVariationMap()[exp_id].name);
-        var user_id = mixpanel.get_distinct_id();
-        //document.getElementById("button_foot_link").href = 'https://stg-parent.zeal.com/#!/landing?mode=createAccount&mixpanelDistinctId=' + user_id;
-       // document.getElementById("button_foot_link_1").href = 'https://stg-parent.zeal.com/#!/landing?mode=createAccount&mixpanelDistinctId=' + user_id;
+        });
     }
 });
- 
+
   // Variables to prevent continuous firing of custom events
   var scrollTwentyFive = true;
   var scrollFifty = true;
@@ -39,35 +34,35 @@
       window.scrollPercent = ($(window).scrollTop() / ($(document).height() - $(window).height())) * 100;
 
       if ($(window).scrollTop() >= 70) {
-        document.getElementById("footer_signup").style.bottom = "0px";
+        document.getElementById("external_signup").style.bottom = "0px";
         document.getElementById("learn_more").style.bottom = "-85px";
         document.getElementById("button_text_main").style.zIndex = "-1";
       }
       // Conditional code we'll use to fire events based on scrollPercentage.
       
       if (window.scrollPercent >= 25 && scrollTwentyFive) {
-        mixpanel.track("stg_landing_scroll_percent", {
+        mixpanel.track("landing_scroll_percent", {
               "Percent": 25
           });
           scrollTwentyFive = false;
       }
 
       if (window.scrollPercent >= 50 && scrollFifty) {
-           mixpanel.track("stg_landing_scroll_percent", {
+           mixpanel.track("landing_scroll_percent", {
               "Percent": 50
           });
           scrollFifty = false;
       }
 
       if (window.scrollPercent >= 75 && scrollSeventyFive) {
-           mixpanel.track("stg_landing_scroll_percent", {
+           mixpanel.track("landing_scroll_percent", {
               "Percent": 75
           });
           scrollSeventyFive = false;
       }
 
       if (window.scrollPercent >= 100 && scrollOneHundred) {
-           mixpanel.track("stg_landing_scroll_percent", {
+           mixpanel.track("landing_scroll_percent", {
               "Percent": 100
           });
           scrollOneHundred = false;
@@ -76,7 +71,7 @@
   });
   
 function trackButton() {
-    mixpanel.track("stg_signup_button_clicked");
+    mixpanel.track("signup_button_clicked");
     var screen = document.getElementById("signup_screen").style;
     screen.visibility="visible";
     screen.zIndex="60";
@@ -96,7 +91,7 @@ function trackButton() {
 }
             
 function closeSignup() {
-    mixpanel.track("stg_closed_signup_screen")
+    mixpanel.track("closed_signup_screen");
     document.getElementById("signup_screen").style.bottom="-100vh";
     document.getElementById("signup_close").style.top="100vh";
     document.getElementById("down_arrow").style.top="100vh";
@@ -111,7 +106,7 @@ function closeFrame() {
 }
 
 function trackVideo() {
-    mixpanel.track("stg_demo_video_played");
+    mixpanel.track("demo_video_played");
 
     var frame = document.getElementById("video_frame");
     frame.style.display="block";
@@ -149,5 +144,47 @@ function trackVideo() {
 }
 
 function trackEdsurge() {
-    mixpanel.track("stg_opened_edsurge");
+    mixpanel.track("opened_edsurge");
+}
+
+setInterval(function(){
+    document.getElementById("edsurge_logo").style.marginLeft = $(window).width()/2 - 50;
+}, 100);
+
+var tutorA;
+var tutorB;
+var tutorC;
+var tutorD;
+
+var count = 0;
+function fillTutorVars() {
+    tutorC = document.getElementById("tutor_adam");
+    tutorA = document.getElementById("tutor_rob");
+    tutorB = document.getElementById("tutor_kelsey");
+    tutorD = document.getElementById("tutor_caroline");
+    slideTutors();
+}
+
+function trackTutorLinkedin() {
+    mixpanel.track("tutor_linkedin_clicked");
+}
+
+function slideTutors() {
+    if (count > 0) mixpanel.track("tutor_card_clicked");
+    
+    tutorC.style.zIndex = "-1";
+    tutorD.style.zIndex = "39";
+    
+    tutorC.style.left = "-32vw";
+    tutorD.style.left = "0vw";
+    tutorA.style.left = "32vw";
+    tutorB.style.left = "64vw";
+    
+    var temp = tutorC;
+    tutorC = tutorB;
+    tutorB = tutorA;
+    tutorA = tutorD;
+    tutorD = temp;
+    
+    count++;
 }
